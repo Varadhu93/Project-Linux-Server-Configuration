@@ -163,4 +163,55 @@ To                         Action      From`
 * Install Apache by running the command: `$ sudo apt-get install apache2`
 * Go to your IP Address and check if Apache is running. Apache home page will be shown. (http://35.154.229.94/)
 
+## Installing PostgreSQL
+
+* Run `$ sudo apt-get install postgresql`
+* Open file: `$ sudo nano /etc/postgresql/9.5/main/pg_hba.conf`
+* Check and make sure it looks as shown as below
+```
+# Database administrative login by Unix domain socket
+local   all             postgres                                peer
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+```
+
+## Installing Python mod_wsgi
+
+* Install the **mod_wsgi package**:  `$ sudo apt-get install libapache2-mod-wsgi-py3`
+* Enable mod_wsgi: `$ sudo a2enmod wsgi`
+* Restart Apache: `$ sudo service apache2 restart`
+* Check if Python is installed: `$ python`
+* Check python version: `$ python --version`
+
+## Create database and new user catalog
+
+* Switch to default **postgres** user from **grader**: `sudo su - postgres`
+* Connect to PSQL: `$ psql`
+```
+postgres=# create database catalog;
+postgres=# create user catalog;
+postgres=# create role catalog with password '####';
+postgres=# alter role catalog login;
+postgres=# grant all privileges on database catalog to catalog;
+```
+* Connect to catalog DB: `\c catalog`
+* Exit psql: `\q`
+* Exit **postgres**: `exit`
+
+## Installing Git
+
+* `sudo apt-get install git`
+
+## Cloning Item-catalog application from Github
+
+* Create directory: `$ mkdir /var/www/app`
+* Change to the directory: `$ cd /var/www/app`
+
 
