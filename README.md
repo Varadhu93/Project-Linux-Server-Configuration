@@ -223,14 +223,14 @@ postgres=# grant all privileges on database catalog to catalog;
 * Install libraries: 
 ```
 $ sudo pip install httplib2 or sudo pip3 install httplib2 
-   $ sudo pip install requests or sudo pip install requests
-   $ sudo pip install --upgrade oauth2client or sudo pip3 install --upgrade oauth2client
-   $ sudo pip install sqlalchemy or sudo pip3 install sqlalchemy
-   $ sudo pip install flask or sudo pip3 install flask
-   $ sudo apt-get install libpq-dev or sudo apt-get install libpq-dev
-   $ sudo pip install psycopg2 or sudo pip 3install psycopg2
+$ sudo pip install requests or sudo pip install requests
+$ sudo pip install --upgrade oauth2client or sudo pip3 install --upgrade oauth2client
+$ sudo pip install sqlalchemy or sudo pip3 install sqlalchemy
+$ sudo pip install flask or sudo pip3 install flask
+$ sudo apt-get install libpq-dev or sudo apt-get install libpq-dev 
 ```
-
+* Changing from SQLite to PostgreSQL will require installation of psycopg2 after Python is installed.
+`$ sudo pip install psycopg2 or sudo pip 3install psycopg2`
 ## Configuring virtual host
 
 * Create a file using command: `$ sudo nano /etc/apache2/sites-available/app.conf`
@@ -275,8 +275,41 @@ application.secret_key = 'super_secret_key'
 ```
 * Restart **Apache**: `$ sudo service apache2 reload`
 
+## Configuring database path and client_secrets.json path
+* Modify the line in `application.py, database_setup.py, database_data.py` as shown below
+`engine = create_engine('postgresql://catalog:INSERT_PASSWORD_FOR_DATABASE_HERE@localhost/catalog')`
+* Change paths to the client_secrets.json file, and any other external files, to absolute. 
 ```
+$ cd /var/www/app
+$ sudo nano application.py
+```
+`CLIENT_SECRET = json.loads(open('/var/www/app/app/client_secrets.json', 'r')
+                          .read())['web']['client_secret']`
 
+## Disable default Apache
 
+* `$ sudo a2dissite 000-defualt.conf`
+* Restart **Apache**: `$ sudo service apache2 reload`
 
+## Setting up the database
 
+* Run `$ sudo python3 application.py`
+* Run `$ sudo python3 database_setup.py`
+* Run `$ sudo python3 database_data.py`
+* Restart **Apache**: `$ sudo service apache2 reload`
+* Now follow the link to http://35.154.229.94/ the application should be running online
+
+## Troubleshooting
+
+* If internal errors occur: check the Apache error file logs
+``` 
+$ sudo tail /var/log/apache2/error.log
+$ sudo tail /var/log/apache2/access.log
+```
+## References
+
+* [Udacity Full Stack Course](https://classroom.udacity.com)
+* [DigitalOcean](digitalocean.com)
+* [askubuntu](https://askubuntu.com)
+* [Stackoverflow](https://stackoverflow.com)
+* [PostgreSQL](www.postgresql.org)
