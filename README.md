@@ -79,3 +79,30 @@ Now that you have a working instance, you can get right into the project.
 * Copy and paste content from downloaded private key file to `lightsail_key.rsa`
 * Set file permission as owner only : `$ chmod 600 ~/.ssh/lightsail_key.rsa`
 * SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94`
+
+# Update the packages
+
+* Run sudo apt-get update to update packages
+* Run sudo apt-get upgrade to install newest versions of packages
+* Set for future updates: sudo apt-get dist-upgrade
+
+# Update SSH port from 22 to 200
+
+* Run $ sudo nano /etc/ssh/sshd_config to open up the configuration file
+* Change the port number from 22 to 2200 in this file
+* Save and exit the file
+* Restart SSH: $ sudo service ssh restart
+
+# Configuring the firewall
+
+* Check firewall status: $ sudo ufw status
+* Set default firewall to deny all incomings: $ sudo ufw default deny incoming
+* Set default firewall to allow all outgoings: $ sudo ufw default allow outgoing
+* Allow incoming TCP packets on port 2200 to allow SSH: $ sudo ufw allow 2200/tcp
+* Allow incoming TCP packets on port 80 to allow www: $ sudo ufw allow www
+* Allow incoming UDP packets on port 123 to allow NTP: $ sudo ufw allow 123/udp
+* Close port 22: $ sudo ufw deny 22
+* Enable firewall: $ sudo ufw enable
+* Check out current firewall status: $ sudo ufw status
+* Update the firewall configuration on Amazon Lightsail website under Networking. Delete default SSH port 22 and add port 80, 123, 2200
+* Open up a new terminal and you can now ssh in via the new port 2200: $ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94 -p 2200
