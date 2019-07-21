@@ -25,7 +25,7 @@ Amazon Web Services login page.
 2. Create an instance
 Once you're logged in, Lightsail will give you a friendly message with a robot on it, prompting you to create an instance. A Lightsail instance is a Linux server running on a virtual machine inside an Amazon datacenter. When you have no instances, Lightsail gives you a picture of an orange robot and suggests that you create an instance.
 
-(https://camo.githubusercontent.com/889eb93426113892bd71cd2a7df6a6b093e9c030/68747470733a2f2f64313768323774366835313561352e636c6f756466726f6e742e6e65742f746f706865722f323031372f46656272756172792f35383965343561305f73637265656e2d73686f742d323031372d30322d31302d61742d31342e35382e31372f73637265656e2d73686f742d323031372d30322d31302d61742d31342e35382e31372e706e67)
+[](https://camo.githubusercontent.com/889eb93426113892bd71cd2a7df6a6b093e9c030/68747470733a2f2f64313768323774366835313561352e636c6f756466726f6e742e6e65742f746f706865722f323031372f46656272756172792f35383965343561305f73637265656e2d73686f742d323031372d30322d31302d61742d31342e35382e31372f73637265656e2d73686f742d323031372d30322d31302d61742d31342e35382e31372e706e67)
 
 When you have no instances, Lightsail gives you a picture of an orange robot and suggests that you create an instance.
 
