@@ -308,6 +308,7 @@ $ sudo tail /var/log/apache2/access.log
 ```
 ## References
 
+* [Amazon Lighsail](https://lightsail.aws.amazon.com)
 * [Udacity Full Stack Course](https://classroom.udacity.com)
 * [DigitalOcean](digitalocean.com)
 * [askubuntu](https://askubuntu.com)
