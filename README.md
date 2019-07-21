@@ -213,5 +213,70 @@ postgres=# grant all privileges on database catalog to catalog;
 
 * Create directory: `$ mkdir /var/www/app`
 * Change to the directory: `$ cd /var/www/app`
+* Clone the item-catalog app: `$ sudo git clone https://github.com/Varadhu93/Item-catalog-application.git app`
+* Change the ownership: `$ sudo chown -R grader:grader app/`
+* Install the required libraries and dependencies: `sudo pip install -r requirements.txt`
+
+## Mandatory libraries to make your application run
+
+* Install pip based on python version: `$ sudo apt-get install python-pip` or `$ sudo apt-get install python-pip3`
+* Install libraries: 
+```
+$ sudo pip install httplib2 or sudo pip3 install httplib2 
+   $ sudo pip install requests or sudo pip install requests
+   $ sudo pip install --upgrade oauth2client or sudo pip3 install --upgrade oauth2client
+   $ sudo pip install sqlalchemy or sudo pip3 install sqlalchemy
+   $ sudo pip install flask or sudo pip3 install flask
+   $ sudo apt-get install libpq-dev or sudo apt-get install libpq-dev
+   $ sudo pip install psycopg2 or sudo pip 3install psycopg2
+```
+
+## Configuring virtual host
+
+* Create a file using command: `$ sudo nano /etc/apache2/sites-available/app.conf`
+```
+<VirtualHost *:80>
+  ServerName 35.154.229.94 
+  ServerAdmin varadhu93amrita@gmail.com
+  WSGIScriptAlias / /var/www/app/app.wsgi
+<Directory /var/www/app/app/>
+  Order allow,deny
+  Allow from all
+</Directory>
+  Alias /static /var/www/app/app/static
+<Directory /var/www/app/app/static/>
+  Order allow,deny
+  Allow from all
+</Directory>
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  LogLevel warn
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+* Enable the virtualhost using command: `sudo a2ensite app`
+* Restart or reload **Apache:** `$ sudo service apache2 reload`
+
+## Configuring .wsgi file
+
+* Create a file: `$ sudo touch /var/www/app/app.wsgi`
+* Add the following content
+```
+#!/usr/bin/python3
+import socket
+from socket import socket
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0, "/var/www/app/app/")
+sys.path.insert(1, "/var/www/app/")
+
+from application import app as application
+application.secret_key = 'super_secret_key'
+```
+* Restart **Apache**: `$ sudo service apache2 reload`
+
+```
+
+
 
 
