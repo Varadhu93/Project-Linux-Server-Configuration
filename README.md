@@ -69,3 +69,13 @@ An SSH window logged into the server instance. From here, it's just like any oth
 
 8. Project time.
 Now that you have a working instance, you can get right into the project.
+
+# SSH into your server
+
+* My IP address: 35.154.229.94
+* SSH port: 2200
+* Download private key from the SSH keys section in the Account section on Amazon Lightsail. The file name should be like LightsailDefaultPrivateKey-us-east-2.pem
+* Create a new file named lightsail_key.rsa under ~/.ssh folder on your local machine
+* Copy and paste content from downloaded private key file to lightsail_key.rsa
+* Set file permission as owner only : $ chmod 600 ~/.ssh/lightsail_key.rsa
+* SSH into the instance: $ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94
