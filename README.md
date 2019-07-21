@@ -48,7 +48,7 @@ Every instance needs a unique hostname. You can use any name you like, as long a
 
 ![](https://camo.githubusercontent.com/7e46932122ccfbddcf03a015bdf0c715d0728935/68747470733a2f2f64313768323774366835313561352e636c6f756466726f6e742e6e65742f746f706865722f323031372f46656272756172792f35383965343363655f73637265656e2d73686f742d323031372d30322d31302d61742d31342e34372e30382f73637265656e2d73686f742d323031372d30322d31302d61742d31342e34372e30382e706e67)
 
-I've named my instance Udacity_Full_Stack.
+I've named my instance ***Udacity_Full_Stack***.
 
 6. Wait for it to start up.
 It may take a few minutes for your instance to start up. While your instance is starting up, Lightsail shows you a grayed-out display.
