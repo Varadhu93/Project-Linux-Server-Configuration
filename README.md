@@ -70,7 +70,7 @@ An SSH window logged into the server instance. From here, it's just like any oth
 8. Project time.
 Now that you have a working instance, you can get right into the project.
 
-# SSH into your server
+## SSH into your server
 
 * My IP address: `35.154.229.94`
 * SSH port: `2200`
@@ -80,20 +80,20 @@ Now that you have a working instance, you can get right into the project.
 * Set file permission as owner only : `$ chmod 600 ~/.ssh/lightsail_key.rsa`
 * SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94`
 
-# Update the packages
+## Update the packages
 
 * Run `sudo apt-get update` to update packages
 * Run `sudo apt-get upgrade` to install newest versions of packages
 * Set for future updates: `sudo apt-get dist-upgrade`
 
-# Update SSH port from 22 to 200
+## Update SSH port from 22 to 200
 
 * Run `$ sudo nano /etc/ssh/sshd_config` to open up the configuration file
 * Change the port number from `22` to `2200` in this file
 * Save and exit the file
 * Restart SSH: `$ sudo service ssh restart`
 
-# Configuring the firewall
+## Configuring the firewall
 
 * Check firewall status: `$ sudo ufw status`
 * Set default firewall to deny all incomings: `$ sudo ufw default deny incoming`
@@ -104,5 +104,28 @@ Now that you have a working instance, you can get right into the project.
 * Close port 22: `$ sudo ufw deny 22`
 * Enable firewall: `$ sudo ufw enable`
 * Check out current firewall status: `$ sudo ufw status`
+* It should look as shown below
+`To                         Action      From
+--                         ------      ----
+22                         DENY        Anywhere
+2200/tcp                   ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+123/udp                    ALLOW       Anywhere
+22 (v6)                    DENY        Anywhere (v6)
+2200/tcp (v6)              ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+123/udp (v6)               ALLOW       Anywhere (v6)`
+
 * Update the firewall configuration on Amazon Lightsail website under Networking. Delete default SSH port `22 and add port 80, 123, 2200`
 * Open up a new terminal and you can now ssh in via the new port 2200: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94 -p 2200`
+
+## Add new user grader
+
+* Add a new user grader: `$ sudo adduser grader`
+* `$ sudo nano /etc/sudoers`
+* Create a file named `grader` under this path: `$ sudo touch /etc/sudoers.d/grader`
+* `$ sudo nano /etc/sudoers.d/grader` 
+* Add the line `grader ALL=(ALL:ALL) ALL` 
+* Save and exit.
+
+## 
