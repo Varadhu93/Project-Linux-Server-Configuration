@@ -223,14 +223,14 @@ postgres=# grant all privileges on database catalog to catalog;
 * Install libraries: 
 ```
 $ sudo pip install httplib2 or sudo pip3 install httplib2 
-$ sudo pip install requests or sudo pip install requests
+$ sudo pip install requests or sudo pip3 install requests
 $ sudo pip install --upgrade oauth2client or sudo pip3 install --upgrade oauth2client
 $ sudo pip install sqlalchemy or sudo pip3 install sqlalchemy
 $ sudo pip install flask or sudo pip3 install flask
 $ sudo apt-get install libpq-dev or sudo apt-get install libpq-dev 
 ```
 * Changing from SQLite to PostgreSQL will require installation of psycopg2 after Python is installed.
-`$ sudo pip install psycopg2 or sudo pip 3install psycopg2`
+`$ sudo pip install psycopg2 or sudo pip3 install psycopg2`
 ## Configuring virtual host
 
 * Create a file using command: `$ sudo nano /etc/apache2/sites-available/app.conf`
