@@ -141,11 +141,26 @@ To                         Action      From`
 * Create a key-pair for grader using `ssh-keygen` on local machine
 * Save it in `~/.ssh` path
 * Now create or deploy the key in SSH environment.
-  1. On local machine, read the public key that was generated `cat ~/.ssh/FILE_NAME.pub`
+  1. On local machine, read the public key that was generated using `cat ~/.ssh/FILE_NAME.pub`
   2. On virtual environment 
   ```
   $ mkdir .ssh
   $ touch .ssh/authorized_keys
   $ nano .ssh/authorized_keys
+  $ sudo chmod 700 /home/grader/.ssh
+  $ sudo chmod 644 /home/grader/.ssh/authorized_keys
+  $ sudo chown -R grader:grader /home/grader/.ssh
+  $ sudo service ssh restart
   ```
-* Copy the generated public key from local machine and write it into ####authorized_keys  
+* Copy the generated public key from local machine and write it into **authorized_keys**  
+* Now login as grader in port 2200: `$ ssh -i ~/.ssh/lightsail_key.rsa grader@35.154.229.94 -p 2200`
+* To disable root login and to disable password for grader do the following `$ sudo nano /etc/ssh/sshd_config`
+* Change `PermitRootLogin without-password` to `PermitRootLogin no` and change `PasswordAuthentication yes` to `PasswordAuthentication no`
+* Restart SSH: `$ sudo service ssh restart`
+
+## Installing Apache
+
+* Install Apache by running the command: `$ sudo apt-get install apache2`
+* Go to your IP Address and check if Apache is running. Apache home page will be shown. ![](http://http://35.154.229.94/)
+
+
