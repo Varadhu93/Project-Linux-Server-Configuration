@@ -10,7 +10,7 @@ A deep understanding of exactly what your web applications are doing, how they a
 ## What will I Learn?
 You will learn how to access, secure, and perform the initial configuration of a bare-bones Linux server. You will then learn how to install and configure a web and database server and actually host a web application
 
-## Get started on Ligtsail
+## Get started on Lightsail
 We're recommending Amazon Lightsail for this project. If you prefer, you can use any other service that gives you a publicly accessible Ubuntu Linux server. But Lightsail works pretty well and it's what we've tested.
 
 There are a few things you need to do when you create your server instance.
