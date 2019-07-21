@@ -161,6 +161,6 @@ To                         Action      From`
 ## Installing Apache
 
 * Install Apache by running the command: `$ sudo apt-get install apache2`
-* Go to your IP Address and check if Apache is running. Apache home page will be shown. [](http://http://35.154.229.94/)
+* Go to your IP Address and check if Apache is running. Apache home page will be shown. (http://http://35.154.229.94/)
 
 
