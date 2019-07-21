@@ -86,6 +86,12 @@ Now that you have a working instance, you can get right into the project.
 * Run `sudo apt-get upgrade` to install newest versions of packages
 * Set for future updates: `sudo apt-get dist-upgrade`
 
+## Configuring the timezone to UTC
+
+* `sudo dpkg-reconfigure tzdata`
+* Select `None of the above`
+* Select `UTC`
+
 ## Update SSH port from 22 to 200
 
 * Run `$ sudo nano /etc/ssh/sshd_config` to open up the configuration file
@@ -106,7 +112,6 @@ Now that you have a working instance, you can get right into the project.
 * Check out current firewall status: `$ sudo ufw status`
 * It should look as shown below
 ```
-{
 To                         Action      From`
 --                         ------      ----`
 22                         DENY        Anywhere
@@ -117,8 +122,8 @@ To                         Action      From`
 2200/tcp (v6)              ALLOW       Anywhere (v6)
 80/tcp (v6)                ALLOW       Anywhere (v6)
 123/udp (v6)               ALLOW       Anywhere (v6)
-}
 ```
+
 * Update the firewall configuration on Amazon Lightsail website under Networking. Delete default SSH port `22 and add port 80, 123, 2200`
 * Open up a new terminal and you can now ssh in via the new port 2200: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94 -p 2200`
 
@@ -131,4 +136,16 @@ To                         Action      From`
 * Add the line `grader ALL=(ALL:ALL) ALL` 
 * Save and exit.
 
-## 
+## Create SSH login for grader using keys
+
+* Create a key-pair for grader using `ssh-keygen` on local machine
+* Save it in `~/.ssh` path
+* Now create or deploy the key in SSH environment.
+  1. On local machine, read the public key that was generated `cat ~/.ssh/FILE_NAME.pub`
+  2. On virtual environment 
+  ```
+  $ mkdir .ssh
+  $ touch .ssh/authorized_keys
+  $ nano .ssh/authorized_keys
+  ```
+* Copy the generated public key from local machine and write it into ####authorized_keys  
