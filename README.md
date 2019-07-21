@@ -105,7 +105,8 @@ Now that you have a working instance, you can get right into the project.
 * Enable firewall: `$ sudo ufw enable`
 * Check out current firewall status: `$ sudo ufw status`
 * It should look as shown below
-`To                         Action      From
+`
+To                         Action      From
 --                         ------      ----
 22                         DENY        Anywhere
 2200/tcp                   ALLOW       Anywhere
@@ -114,7 +115,8 @@ Now that you have a working instance, you can get right into the project.
 22 (v6)                    DENY        Anywhere (v6)
 2200/tcp (v6)              ALLOW       Anywhere (v6)
 80/tcp (v6)                ALLOW       Anywhere (v6)
-123/udp (v6)               ALLOW       Anywhere (v6)`
+123/udp (v6)               ALLOW       Anywhere (v6)
+`
 
 * Update the firewall configuration on Amazon Lightsail website under Networking. Delete default SSH port `22 and add port 80, 123, 2200`
 * Open up a new terminal and you can now ssh in via the new port 2200: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@35.154.229.94 -p 2200`
